@@ -1,0 +1,8 @@
+{
+  "name": "mintlify-docs",
+  "private": true,
+  "scripts": {
+    "dev": "mint dev",
+    "sync": "py scripts/sync_from_source.py"
+  }
+}
