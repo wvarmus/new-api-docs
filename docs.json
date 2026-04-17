@@ -1,0 +1,122 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "无限星河 AI 文档",
+  "colors": {
+    "primary": "#4f46e5"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "控制台",
+        "href": "https://newapi.dukabaka.com/console"
+      },
+      {
+        "label": "模型广场",
+        "href": "https://newapi.dukabaka.com/pricing"
+      }
+    ]
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "使用指南",
+        "groups": [
+          {
+            "group": "平台介绍",
+            "pages": [
+              "平台接入概览/关于我们与服务优势",
+              "平台接入概览/平台通用使用流程",
+              "平台接入概览/计费逻辑深度解析",
+              "平台接入概览/充值与财务管理",
+              "平台接入概览/快速上手指南"
+            ]
+          },
+          {
+            "group": "电商平台兑换指南",
+            "pages": [
+              "电商平台兑换指南/适用平台与防骗提醒",
+              "电商平台兑换指南/保姆级兑换步骤",
+              "电商平台兑换指南/电商用户常见问题"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API 文档",
+        "groups": [
+          {
+            "group": "概览",
+            "pages": [
+              "api-overview",
+              "接口参考手册/实时语音",
+              "接口参考手册/错误码说明"
+            ]
+          },
+          {
+            "group": "技术对接规范",
+            "pages": [
+              "技术对接规范/网关配置",
+              "技术对接规范/身份认证与权限管理",
+              "技术对接规范/高级功能与特性支持"
+            ]
+          },
+          {
+            "group": "接口参考手册",
+            "openapi": "openapi.json"
+          }
+        ]
+      },
+      {
+        "tab": "软件与客户端支持",
+        "groups": [
+          {
+            "group": "软件与客户端集成",
+            "pages": [
+              "软件与客户端集成/Chatbox",
+              "软件与客户端集成/Cherry Studio",
+              "软件与客户端集成/Claude Code",
+              "软件与客户端集成/Crush",
+              "软件与客户端集成/Cursor",
+              "软件与客户端集成/LobeChat",
+              "软件与客户端集成/NextChat",
+              "软件与客户端集成/OpenClaw",
+              "软件与客户端集成/OpenCode",
+              "软件与客户端集成/SillyTavern (酒馆)",
+              "软件与客户端集成/VS Code"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "常见问题",
+        "groups": [
+          {
+            "group": "故障与限制",
+            "pages": [
+              "技术支持与排错/常见 HTTP 状态码与故障排查",
+              "技术支持与排错/速率限制与并发说明"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "联系我们",
+        "groups": [
+          {
+            "group": "企业与开发者生态",
+            "pages": [
+              "企业与开发者生态/企业与开发者生态"
+            ]
+          },
+          {
+            "group": "联系方式与反馈",
+            "pages": [
+              "联系方式与反馈/联系方式与反馈"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

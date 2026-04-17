@@ -1,0 +1,35 @@
+---
+title: 实时语音
+description: WebSocket 实时语音接口说明。
+---
+
+# 实时语音
+
+建立 WebSocket 连接用于实时对话交互。
+
+## 接口信息
+
+- **协议**：`WSS`
+- **端点**：`/v1/realtime?model=gpt-4o-realtime`
+- **认证**：`Authorization: Bearer {api_key}`
+
+## JavaScript 示例
+
+```javascript
+const ws = new WebSocket('wss://api.wxxingheai.com/v1/realtime?model=gpt-4o-realtime', {
+  headers: { Authorization: 'Bearer sk-xxx' }
+});
+
+ws.onopen = () => {
+  console.log('Connected');
+  ws.send(JSON.stringify({
+    type: 'conversation.item.create',
+    content: { type: 'input_text', text: '你好' }
+  }));
+};
+
+ws.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  console.log(data);
+};
+```

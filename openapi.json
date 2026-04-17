@@ -1,0 +1,765 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "无限星河 AI API",
+    "version": "1.0.0",
+    "description": "基于 D:/AI/api-reference.md 整理的 OpenAPI 描述，用于 Mintlify API 文档展示。"
+  },
+  "servers": [
+    {
+      "url": "https://api.wxxingheai.com",
+      "description": "无限星河 AI API"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "ChatMessage": {
+        "type": "object",
+        "properties": {
+          "role": {"type": "string"},
+          "content": {"type": "string"}
+        },
+        "required": ["role", "content"]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {"type": "string"},
+              "type": {"type": "string"},
+              "code": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {"name": "模型与发现"},
+    {"name": "文本与对话"},
+    {"name": "嵌入与检索"},
+    {"name": "内容安全"},
+    {"name": "图像"},
+    {"name": "音频"},
+    {"name": "视频"},
+    {"name": "实时语音"}
+  ],
+  "paths": {
+    "/v1/models": {
+      "get": {
+        "tags": ["模型与发现"],
+        "summary": "模型列表",
+        "description": "获取当前可用的模型列表，并根据请求头自动返回 OpenAI、Anthropic 或 Gemini 风格结构。",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "openai": {
+                    "value": {
+                      "object": "list",
+                      "data": [
+                        {"id": "gpt-4", "object": "model", "created": 1687882411, "owned_by": "system"}
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/chat/completions": {
+      "post": {
+        "tags": ["文本与对话"],
+        "summary": "聊天补全",
+        "description": "对话补全接口，用于 AI 对话交互。支持流式和非流式响应。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {"type": "string"},
+                  "messages": {
+                    "type": "array",
+                    "items": {"$ref": "#/components/schemas/ChatMessage"}
+                  },
+                  "temperature": {"type": "number"},
+                  "max_tokens": {"type": "integer"},
+                  "stream": {"type": "boolean"},
+                  "tools": {"type": "array"},
+                  "reasoning_effort": {"type": "string"}
+                },
+                "required": ["model", "messages"]
+              },
+              "example": {
+                "model": "gpt-4",
+                "messages": [
+                  {"role": "system", "content": "你是一个有帮助的助手"},
+                  {"role": "user", "content": "你好"}
+                ],
+                "temperature": 0.7,
+                "max_tokens": 1000,
+                "stream": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": "chatcmpl-xxx",
+                  "object": "chat.completion",
+                  "created": 1700000000,
+                  "model": "gpt-4",
+                  "choices": [
+                    {
+                      "index": 0,
+                      "message": {"role": "assistant", "content": "你好！有什么可以帮助你的吗？"},
+                      "finish_reason": "stop"
+                    }
+                  ],
+                  "usage": {
+                    "prompt_tokens": 20,
+                    "completion_tokens": 30,
+                    "total_tokens": 50
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/responses": {
+      "post": {
+        "tags": ["文本与对话"],
+        "summary": "Responses API",
+        "description": "用于创建模型响应，支持多轮对话、工具调用、推理等功能。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {"type": "string"},
+                  "input": {},
+                  "instructions": {"type": "string"},
+                  "previous_response_id": {"type": "string"},
+                  "truncation": {"type": "string"}
+                },
+                "required": ["model"]
+              },
+              "example": {
+                "model": "gpt-4",
+                "input": "你好",
+                "instructions": "你是一个有帮助的助手"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功"
+          }
+        }
+      }
+    },
+    "/v1/messages": {
+      "post": {
+        "tags": ["文本与对话"],
+        "summary": "Claude 格式",
+        "description": "Anthropic Claude Messages API 格式的请求接口。",
+        "parameters": [
+          {
+            "name": "anthropic-version",
+            "in": "header",
+            "required": true,
+            "schema": {"type": "string"},
+            "example": "2023-06-01"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "claude-3-opus-20240229",
+                "messages": [{"role": "user", "content": "你好"}],
+                "max_tokens": 1024,
+                "temperature": 0.7
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功"
+          }
+        }
+      }
+    },
+    "/v1beta/models/{model}:generateContent": {
+      "post": {
+        "tags": ["文本与对话"],
+        "summary": "Gemini 聊天",
+        "description": "Google Gemini 格式的对话接口。",
+        "parameters": [
+          {
+            "name": "model",
+            "in": "path",
+            "required": true,
+            "schema": {"type": "string"},
+            "example": "gemini-2.0-flash"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "contents": [{"parts": [{"text": "你好"}]}],
+                "generationConfig": {
+                  "temperature": 0.9,
+                  "topP": 1,
+                  "maxOutputTokens": 2048
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功"
+          }
+        }
+      }
+    },
+    "/v1/completions": {
+      "post": {
+        "tags": ["文本与对话"],
+        "summary": "文本补全",
+        "description": "传统文本补全接口。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "gpt-3.5-turbo-instruct",
+                "prompt": "今天天气真好，",
+                "max_tokens": 100,
+                "temperature": 0.7
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/embeddings": {
+      "post": {
+        "tags": ["嵌入与检索"],
+        "summary": "文本嵌入",
+        "description": "文本嵌入向量生成接口，用于将文本转换为数值向量。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "text-embedding-3-small",
+                "input": "要转换的文本内容"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/engines/{model}/embeddings": {
+      "post": {
+        "tags": ["嵌入与检索"],
+        "summary": "Gemini 嵌入",
+        "description": "Gemini 格式的嵌入接口。",
+        "parameters": [
+          {
+            "name": "model",
+            "in": "path",
+            "required": true,
+            "schema": {"type": "string"}
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "text-embedding-ada-002",
+                "input": "要转换的文本"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/rerank": {
+      "post": {
+        "tags": ["嵌入与检索"],
+        "summary": "文档重排序",
+        "description": "根据查询对文档列表进行相关性重排序。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "rerank-english-v2.0",
+                "query": "查询文本",
+                "documents": ["文档1", "文档2", "文档3"],
+                "top_n": 3,
+                "return_documents": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/moderations": {
+      "post": {
+        "tags": ["内容安全"],
+        "summary": "内容审查",
+        "description": "检查文本内容是否违反使用政策。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "input": "要审查的文本内容"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/images/generations": {
+      "post": {
+        "tags": ["图像"],
+        "summary": "图像生成",
+        "description": "AI 图像生成接口，支持 DALL-E 系列和 GPT Image 等模型。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "dall-e-3",
+                "prompt": "一只可爱的猫咪在草地上玩耍",
+                "n": 1,
+                "size": "1024x1024",
+                "quality": "standard",
+                "style": "natural"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/images/edits": {
+      "post": {
+        "tags": ["图像"],
+        "summary": "图像编辑",
+        "description": "在给定原始图像和提示的情况下创建编辑或扩展图像。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {"type": "string", "format": "binary"},
+                  "mask": {"type": "string", "format": "binary"},
+                  "prompt": {"type": "string"},
+                  "n": {"type": "integer"},
+                  "size": {"type": "string"}
+                },
+                "required": ["image", "prompt"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/audio/speech": {
+      "post": {
+        "tags": ["音频"],
+        "summary": "文本转语音",
+        "description": "将文本转换为音频。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "tts-1",
+                "input": "你好，欢迎使用无限星河AI！",
+                "voice": "alloy",
+                "response_format": "mp3",
+                "speed": 1.0
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/audio/transcriptions": {
+      "post": {
+        "tags": ["音频"],
+        "summary": "音频转录",
+        "description": "将音频转换为文本（语音识别）。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {"type": "string", "format": "binary"},
+                  "model": {"type": "string"},
+                  "language": {"type": "string"},
+                  "response_format": {"type": "string"},
+                  "temperature": {"type": "number"}
+                },
+                "required": ["file", "model"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/audio/translations": {
+      "post": {
+        "tags": ["音频"],
+        "summary": "音频翻译",
+        "description": "将音频翻译为英文文本。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {"type": "string", "format": "binary"},
+                  "model": {"type": "string"},
+                  "temperature": {"type": "number"}
+                },
+                "required": ["file", "model"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/videos": {
+      "post": {
+        "tags": ["视频"],
+        "summary": "视频生成",
+        "description": "AI 视频生成接口（OpenAI Sora 兼容格式）。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {"type": "string"},
+                  "prompt": {"type": "string"},
+                  "image": {"type": "string"},
+                  "duration": {"type": "number"},
+                  "width": {"type": "integer"},
+                  "height": {"type": "integer"},
+                  "fps": {"type": "integer"},
+                  "seed": {"type": "integer"},
+                  "n": {"type": "integer"},
+                  "metadata": {"type": "object"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/video/generations": {
+      "post": {
+        "tags": ["视频"],
+        "summary": "视频生成任务",
+        "description": "创建视频生成任务。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "video-model",
+                "prompt": "一只可爱的猫咪",
+                "duration": 5
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/v1/video/generations/{task_id}": {
+      "get": {
+        "tags": ["视频"],
+        "summary": "获取视频生成任务状态",
+        "description": "获取视频生成任务当前状态。",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {"type": "string"}
+          }
+        ],
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/kling/v1/videos/text2video": {
+      "post": {
+        "tags": ["视频"],
+        "summary": "可灵视频（文生视频）",
+        "description": "快手可灵 AI 文生视频接口。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "kling-v1",
+                "prompt": "一只可爱的猫咪在草地上玩耍"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/kling/v1/videos/image2video": {
+      "post": {
+        "tags": ["视频"],
+        "summary": "可灵视频（图生视频）",
+        "description": "快手可灵 AI 图生视频接口。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "model": "kling-v1",
+                "prompt": "让猫咪动起来",
+                "image": "https://example.com/cat.jpg"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/kling/v1/videos/text2video/{task_id}": {
+      "get": {
+        "tags": ["视频"],
+        "summary": "获取可灵文生视频任务状态",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {"type": "string"}
+          }
+        ],
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/kling/v1/videos/image2video/{task_id}": {
+      "get": {
+        "tags": ["视频"],
+        "summary": "获取可灵图生视频任务状态",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {"type": "string"}
+          }
+        ],
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    },
+    "/jimeng": {
+      "post": {
+        "tags": ["视频"],
+        "summary": "即梦视频",
+        "description": "字节即梦 AI 视频生成接口。通过 Action 参数区分提交任务与查询结果。",
+        "parameters": [
+          {
+            "name": "Action",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string", "enum": ["CVSync2AsyncSubmitTask", "CVSync2AsyncGetResult"]}
+          },
+          {
+            "name": "Version",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string", "example": "v1"}
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "examples": {
+                "text2video": {
+                  "value": {
+                    "req_key": "jimeng_vgfm_t2v_l20",
+                    "prompt": "一只穿着宇航服的猫咪在月球上行走"
+                  }
+                },
+                "image2video": {
+                  "value": {
+                    "req_key": "jimeng_vgfm_i2v_l20",
+                    "prompt": "让猫咪动起来",
+                    "image_urls": ["https://example.com/cat.jpg"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "成功"}
+        }
+      }
+    }
+  },
+  "x-mint": {
+    "groups": [
+      {
+        "group": "模型与发现",
+        "openapi": [
+          "GET /v1/models"
+        ]
+      },
+      {
+        "group": "文本与对话",
+        "openapi": [
+          "POST /v1/chat/completions",
+          "POST /v1/responses",
+          "POST /v1/messages",
+          "POST /v1beta/models/{model}:generateContent",
+          "POST /v1/completions"
+        ]
+      },
+      {
+        "group": "嵌入与检索",
+        "openapi": [
+          "POST /v1/embeddings",
+          "POST /v1/engines/{model}/embeddings",
+          "POST /v1/rerank"
+        ]
+      },
+      {
+        "group": "内容安全",
+        "openapi": [
+          "POST /v1/moderations"
+        ]
+      },
+      {
+        "group": "图像",
+        "openapi": [
+          "POST /v1/images/generations",
+          "POST /v1/images/edits"
+        ]
+      },
+      {
+        "group": "音频",
+        "openapi": [
+          "POST /v1/audio/speech",
+          "POST /v1/audio/transcriptions",
+          "POST /v1/audio/translations"
+        ]
+      },
+      {
+        "group": "视频",
+        "openapi": [
+          "POST /v1/videos",
+          "POST /v1/video/generations",
+          "GET /v1/video/generations/{task_id}",
+          "POST /kling/v1/videos/text2video",
+          "POST /kling/v1/videos/image2video",
+          "GET /kling/v1/videos/text2video/{task_id}",
+          "GET /kling/v1/videos/image2video/{task_id}",
+          "POST /jimeng"
+        ]
+      }
+    ]
+  }
+}
