@@ -45,7 +45,6 @@ def file_key(name: str):
     return (1, stripped)
 
 
-RESERVED_ROOT_FILES = {"index.mdx", "docs.json", "openapi.json", "api-overview.mdx", "package.json"}
 RESERVED_API_FILES = {
     "接口参考手册": {
         "实时语音.mdx": "---\ntitle: 实时语音\ndescription: WebSocket 实时语音接口说明。\n---\n\n# 实时语音\n\n建立 WebSocket 连接用于实时对话交互。\n\n## 接口信息\n\n- **协议**：`WSS`\n- **端点**：`/v1/realtime?model=gpt-4o-realtime`\n- **认证**：`Authorization: Bearer {api_key}`\n\n## JavaScript 示例\n\n```javascript\nconst ws = new WebSocket('wss://api.wxxingheai.com/v1/realtime?model=gpt-4o-realtime', {\n  headers: { Authorization: 'Bearer sk-xxx' }\n});\n\nws.onopen = () => {\n  console.log('Connected');\n  ws.send(JSON.stringify({\n    type: 'conversation.item.create',\n    content: { type: 'input_text', text: '你好' }\n  }));\n};\n\nws.onmessage = (event) => {\n  const data = JSON.parse(event.data);\n  console.log(data);\n};\n```\n",
