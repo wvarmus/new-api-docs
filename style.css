@@ -1,0 +1,8 @@
+/* Make inline doc hyperlinks read more clearly as clickable text. */
+.mdx-content a {
+  color: #0284c7 !important;
+}
+
+.mdx-content a:hover {
+  color: #0369a1 !important;
+}

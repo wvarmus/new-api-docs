@@ -3,7 +3,10 @@
   "theme": "mint",
   "name": "无限星河 AI 文档",
   "colors": {
-    "primary": "#4f46e5"
+    "primary": "#0ea5e9"
+  },
+  "styling": {
+    "css": "style.css"
   },
   "navbar": {
     "links": [
