@@ -1,4 +1,4 @@
----
+﻿---
 title: Cursor AI 代码编辑器集成指南
 ---
 
@@ -24,11 +24,9 @@ Cursor 默认使用其自带的服务，要使用无限星河AI，需要开启�
 ### 2. 配置 API Key 与 Base URL
 1. 在 **OpenAI API Key** 选项框中，填入您在无限星河生成的 `sk-` 密钥。
 2. 点击下方的 **[Override OpenAI Base URL]**（覆盖默认地址）。
-3. 在弹出的输入框中填入：`https://api.wxxingheai.com/v1`
+3. 在弹出的输入框中填入：`http://infistar.ai/v1`
 4. 点击 **[Verify]** 或回车确认。
 
-> **[图片备注：Cursor 模型设置页配置示意图]**
-> 展示设置窗口中 Model 选项卡下，如何填写密钥以及点击蓝色文字“Override OpenAI Base URL”并填入中转地址的过程。
 
 ### 3. 启用特定模型
 在 Models 列表中，确保勾选了您想使用的型号，例如：
@@ -54,7 +52,7 @@ Cursor 默认使用其自带的服务，要使用无限星河AI，需要开启�
 ## 四、 常见问题排查 (FAQ)
 
 ### Q1：提示 "Connection Error" 或请求失败？
-* **地址检查**：确保 Base URL 填入的是 `https://api.wxxingheai.com/v1`。
+* **地址检查**：确保 Base URL 填入的是 `http://infistar.ai/v1`。
 * **余额检查**：Cursor 的 Composer 功能消耗 Token 较快，请确保您的无限星河账户余额充足。
 
 ### Q2：如何切换到 Claude 3.7 模型？
@@ -70,3 +68,4 @@ Cursor 默认使用其自带的服务，要使用无限星河AI，需要开启�
 * **代码重构与 Debug**：`claude-3-7-sonnet` (代码逻辑最严谨)
 * **复杂架构设计**：`o1` 或 `o3-mini` (擅长处理长链路逻辑)
 * **日常脚本/注释生成**：`gpt-4o-mini` (高性价比之选)
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: VS Code (Continue 插件) 深度集成指南
 ---
 
@@ -31,14 +31,14 @@ Continue 使用 JSON 配置文件进行深度定制。请按照以下步骤配�
     "title": "无限星河-Claude 3.7",
     "model": "claude-3-7-sonnet",
     "apiKey": "您的_SK_密钥",
-    "baseUrl": "https://api.wxxingheai.com/v1",
+    "baseUrl": "http://infistar.ai/v1",
     "provider": "openai"
   },
   {
     "title": "无限星河-GPT 4o",
     "model": "gpt-4o",
     "apiKey": "您的_SK_密钥",
-    "baseUrl": "https://api.wxxingheai.com/v1",
+    "baseUrl": "http://infistar.ai/v1",
     "provider": "openai"
   }
 ],
@@ -54,13 +54,11 @@ Continue 使用 JSON 配置文件进行深度定制。请按照以下步骤配�
   "title": "Tab 极速补全",
   "model": "gpt-4o-mini",
   "apiKey": "您的_SK_密钥",
-  "baseUrl": "https://api.wxxingheai.com/v1",
+  "baseUrl": "http://infistar.ai/v1",
   "provider": "openai"
 }
 ```
 
-> **[图片备注：VS Code 侧边栏 Continue 配置界面]**
-> 展示 VS Code 分屏界面：左侧为 Continue 对话框，右侧为 `config.json` 编辑窗口，用红框高亮显示 `baseUrl` 和 `apiKey` 的正确填写位置。
 
 ---
 
@@ -75,7 +73,7 @@ Continue 使用 JSON 配置文件进行深度定制。请按照以下步骤配�
 ## 四、 常见问题排查 (FAQ)
 
 ### Q1：配置后无法连接，提示 Connection Error？
-* 请检查 `baseUrl` 是否完整且正确：`https://api.wxxingheai.com/v1`（不要漏掉 `https://` 和 `/v1`）。
+* 请检查 `baseUrl` 是否完整且正确：`http://infistar.ai/v1`（不要漏掉 `https://` 和 `/v1`）。
 * 确保您的 API Key 没有多余的空格或换行。
 
 ### Q2：自动代码补全 (Tab) 速度很慢？
@@ -91,3 +89,4 @@ Continue 使用 JSON 配置文件进行深度定制。请按照以下步骤配�
 * **复杂架构与深层逻辑重构**：`claude-3-7-sonnet` (目前开发者公认最强)
 * **烧脑算法与断点 Debug**：`o1-preview` 或 `o3-mini` (思维链深度推理)
 * **实时打字自动补全**：`gpt-4o-mini` (极致性价比与响应速度)
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: Chatbox 全平台集成指南
 ---
 
@@ -21,13 +21,11 @@ Chatbox 是一款开源的桌面客户端，支持 Windows、macOS、Linux 以�
 1.  **启动 Chatbox**：打开软件后，点击左下角的 **[设置]**（齿轮图标）。
 2.  **模型提供方**：在下拉菜单中选择 **OpenAI API**。
 3.  **API 密钥 (API Key)**：填入您在无限星河后台生成的 `sk-` 密钥。
-4.  **API 域名 (Proxy)**：填入 `https://api.wxxingheai.com`
-    > *注：Chatbox 通常会自动补全后缀。如果连接测试失败，请尝试填写完整地址：`https://api.wxxingheai.com/v1`*
+4.  **API 域名 (Proxy)**：填入 `http://infistar.ai`
+    > *注：Chatbox 通常会自动补全后缀。如果连接测试失败，请尝试填写完整地址：`http://infistar.ai/v1`*
 5.  **模型 (Model)**：点击“刷新模型列表”或手动输入模型 ID。
     * **推荐方案**：`gpt-4o` 或 `claude-3-7-sonnet`
 
-> **[图片备注：Chatbox 配置界面截图]**
-> 展示 Chatbox 设置面板，重点标注“模型提供方”、“API 密钥”和“API 域名”三个核心填空位置。
 
 ---
 
@@ -65,3 +63,4 @@ Chatbox 内置了丰富的角色库。您可以导入“翻译官”、“代码
 * **极速对话/翻译**：`gpt-4o-mini` 或 `gemini-2.0-flash`
 * **深度创作/逻辑推理**：`claude-3-7-sonnet` 或 `o1-preview`
 * **长文本分析**：`gemini-2.0-pro`
+

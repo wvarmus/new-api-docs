@@ -1,4 +1,4 @@
----
+﻿---
 title: Crush (极客终端 AI 助手) 深度集成指南
 ---
 
@@ -42,14 +42,12 @@ crush
 
 1. **Select Provider (选择服务商)**: 选择 **OpenAI Compatible**（或 Custom / 自定义选项）。
 2. **Base URL (接口地址)**: 输入无限星河的网关地址：
-   `https://api.wxxingheai.com/v1`
+   `http://infistar.ai/v1`
 3. **API Key (密钥)**: 粘贴您在无限星河后台生成的 `sk-` 密钥。
 4. **Select Model (选择模型)**: 您可以直接输入 `gpt-4o`、`claude-3-7-sonnet` 或 `o1-preview` 等无限星河支持的模型 ID。
 
 > *提示：Crush 会将您的配置安全地保存在本地（如 `~/.local/share/crush/crush.json`）。后续启动时无需再次输入。*
 
-> **[图片备注：Crush 终端界面截图]**
-> 展示 Crush 极具辨识度的终端排版（Bubble Tea 框架驱动），高亮显示服务商选择和 Base URL 配置界面。
 
 ---
 
@@ -88,3 +86,4 @@ Crush 支持多会话状态留存。您可以随时中途切换模型（例如�
 * **本地探索与文件整理**：`gpt-4o-mini` (低成本，处理日常脚本极佳)
 * **复杂架构与多文件重构**：`claude-3-7-sonnet` (代码推理天花板，完美兼容工具调用)
 * **硬核算法与底层排错**：`o1` 或 `o3-mini` (逻辑深度极强)
+

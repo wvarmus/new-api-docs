@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "无限星河 AI 文档",
@@ -12,11 +12,11 @@
     "links": [
       {
         "label": "控制台",
-        "href": "https://newapi.dukabaka.com/console"
+        "href": "http://infistar.ai/console"
       },
       {
         "label": "模型广场",
-        "href": "https://newapi.dukabaka.com/pricing"
+        "href": "http://infistar.ai/pricing"
       }
     ]
   },
@@ -123,3 +123,4 @@
     ]
   }
 }
+

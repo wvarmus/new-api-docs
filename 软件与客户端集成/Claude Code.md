@@ -1,4 +1,4 @@
----
+﻿---
 title: Claude Code (CLI) 全面集成指南
 ---
 
@@ -35,14 +35,14 @@ npm install -g @anthropic-ai/claude-code
 * **Mac/Linux (Zsh)**:
   在 `~/.zshrc` 文件末尾添加：
   ```bash
-  export ANTHROPIC_BASE_URL="https://api.wxxingheai.com/v1"
+  export ANTHROPIC_BASE_URL="http://infistar.ai/v1"
   export ANTHROPIC_API_KEY="您的_SK_密钥"
   ```
   保存后运行 `source ~/.zshrc` 生效。
 
 * **Windows (PowerShell)**:
   ```powershell
-  [Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", "https://api.wxxingheai.com/v1", "User")
+  [Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", "http://infistar.ai/v1", "User")
   [Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "您的_SK_密钥", "User")
   ```
 
@@ -52,8 +52,6 @@ npm install -g @anthropic-ai/claude-code
 claude
 ```
 
-> **[图片备注：Claude Code 启动与交互界面]**
-> 展示终端中 Claude Code 的登录动画，以及它在“Thinking”模式下逐步拆解任务、列出计划并执行修改的交互过程。
 
 ---
 
@@ -79,7 +77,7 @@ claude
 ## 六、 常见问题排查 (FAQ)
 
 ### Q1：启动时提示 API 连接错误？
-* 请检查 `ANTHROPIC_BASE_URL` 是否正确设置为 `https://api.wxxingheai.com/v1`。
+* 请检查 `ANTHROPIC_BASE_URL` 是否正确设置为 `http://infistar.ai/v1`。
 * 确保您的 API Key 具有足够的余额，因为 Claude Code 会读取大量项目上下文，Token 消耗较快。
 
 ### Q2：如何开启/关闭“深度思考”模式？
@@ -94,3 +92,4 @@ claude
 
 * **工程重构与复杂 Debug**：`claude-3-7-sonnet` (官方钦定最强搭配)
 * **日常咨询与简单修改**：`claude-3-5-haiku` (极致响应速度与低成本)
+
