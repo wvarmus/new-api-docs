@@ -1,7 +1,8 @@
-﻿{
+{
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "无限星河 AI 文档",
+  "logo": "/images/site-logo.svg",
   "colors": {
     "primary": "#0ea5e9"
   },
