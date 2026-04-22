@@ -1,4 +1,4 @@
-﻿---
+---
 title: OpenClaw (全能自治 AI 智能体) 深度集成指南
 ---
 
@@ -30,7 +30,7 @@ OpenClaw 提供了极其友好的交互式配置向导。您可以直接在引�
 当您运行 `openclaw onboard` 后，在终端提示进行 **Inference/LLM** 设置时：
 
 1. **Select Provider (选择提供商)**：使用方向键选择 **Custom / OpenAI Compatible**（自定义/兼容 OpenAI 协议）。
-2. **Base URL (接口地址)**：填入：`http://infistar.ai/v1`
+2. **Base URL (接口地址)**：填入：`https://infistar.ai/v1`
 3. **API Key (密钥)**：粘贴您在无限星河后台生成的 `sk-` 密钥。
 4. **Select Model (选择模型)**：手动输入 `claude-3-7-sonnet` 或 `gpt-4o`。
 
@@ -40,7 +40,7 @@ OpenClaw 提供了极其友好的交互式配置向导。您可以直接在引�
 ```yaml
 llm:
   provider: openai
-  base_url: "http://infistar.ai/v1"
+  base_url: "https://infistar.ai/v1"
   api_key: "您的_SK_密钥"
   model: "claude-3-7-sonnet"
 ```

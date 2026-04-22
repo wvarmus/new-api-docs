@@ -1,4 +1,4 @@
-﻿---
+---
 title: SillyTavern (酒馆) 集成指南
 ---
 
@@ -29,7 +29,7 @@ SillyTavern 是一个开源项目，通常有以下几种运行方式：
 ### 3. 填写关键参数
 请严格按照以下标准填写，以确保连接成功：
 
-* **API 地址 (API URL)**：填入 `http://infistar.ai/v1`
+* **API 地址 (API URL)**：填入 `https://infistar.ai/v1`
 * **API 密钥 (API Key)**：填入您在无限星河AI 后台生成的 `sk-` 密钥。
 * **点击连接 (Connect)**：设置完成后点击“连接”按钮。若圆点变绿，说明连接成功。
 

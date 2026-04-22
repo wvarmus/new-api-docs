@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import json
 import re
@@ -204,8 +204,8 @@ def build_docs_json():
         "colors": {"primary": "#4f46e5"},
         "navbar": {
             "links": [
-                {"label": "控制台", "href": "http://infistar.ai/console"},
-                {"label": "模型广场", "href": "http://infistar.ai/pricing"}
+                {"label": "控制台", "href": "https://infistar.ai/console"},
+                {"label": "模型广场", "href": "https://infistar.ai/pricing"}
             ]
         },
         "navigation": {

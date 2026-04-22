@@ -1,4 +1,4 @@
-﻿---
+---
 title: Claude Code (CLI) 全面集成指南
 ---
 
@@ -35,14 +35,14 @@ npm install -g @anthropic-ai/claude-code
 * **Mac/Linux (Zsh)**:
   在 `~/.zshrc` 文件末尾添加：
   ```bash
-  export ANTHROPIC_BASE_URL="http://infistar.ai/v1"
+  export ANTHROPIC_BASE_URL="https://infistar.ai/v1"
   export ANTHROPIC_API_KEY="您的_SK_密钥"
   ```
   保存后运行 `source ~/.zshrc` 生效。
 
 * **Windows (PowerShell)**:
   ```powershell
-  [Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", "http://infistar.ai/v1", "User")
+  [Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", "https://infistar.ai/v1", "User")
   [Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "您的_SK_密钥", "User")
   ```
 
@@ -77,7 +77,7 @@ claude
 ## 六、 常见问题排查 (FAQ)
 
 ### Q1：启动时提示 API 连接错误？
-* 请检查 `ANTHROPIC_BASE_URL` 是否正确设置为 `http://infistar.ai/v1`。
+* 请检查 `ANTHROPIC_BASE_URL` 是否正确设置为 `https://infistar.ai/v1`。
 * 确保您的 API Key 具有足够的余额，因为 Claude Code 会读取大量项目上下文，Token 消耗较快。
 
 ### Q2：如何开启/关闭“深度思考”模式？

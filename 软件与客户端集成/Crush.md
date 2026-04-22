@@ -1,4 +1,4 @@
-﻿---
+---
 title: Crush (极客终端 AI 助手) 深度集成指南
 ---
 
@@ -42,7 +42,7 @@ crush
 
 1. **Select Provider (选择服务商)**: 选择 **OpenAI Compatible**（或 Custom / 自定义选项）。
 2. **Base URL (接口地址)**: 输入无限星河的网关地址：
-   `http://infistar.ai/v1`
+   `https://infistar.ai/v1`
 3. **API Key (密钥)**: 粘贴您在无限星河后台生成的 `sk-` 密钥。
 4. **Select Model (选择模型)**: 您可以直接输入 `gpt-4o`、`claude-3-7-sonnet` 或 `o1-preview` 等无限星河支持的模型 ID。
 

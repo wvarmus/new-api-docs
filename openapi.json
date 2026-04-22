@@ -1,4 +1,4 @@
-﻿{
+{
   "openapi": "3.1.0",
   "info": {
     "title": "无限星河 AI API",
@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://infistar.ai",
+      "url": "https://infistar.ai",
       "description": "无限星河 AI API"
     }
   ],

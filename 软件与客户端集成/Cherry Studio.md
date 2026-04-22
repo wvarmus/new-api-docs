@@ -1,4 +1,4 @@
-﻿---
+---
 title: Cherry Studio 集成指南
 ---
 
@@ -33,7 +33,7 @@ Cherry Studio 是一款支持多平台、界面优雅且功能全面的桌面 AI
 请严格按照以下说明填写：
 
 * **API 密钥 (API Key)**：填入您在无限星河AI 后台生成的 `sk-` 开头的密钥。
-* **API 地址 (API Base URL)**：填入本站的核心地址：`http://infistar.ai/v1`
+* **API 地址 (API Base URL)**：填入本站的核心地址：`https://infistar.ai/v1`
     * *注意：Cherry Studio 必须在地址末尾加上 `/v1`。*
 * **模型列表**：点击旁边的“检查”或“管理模型”按钮，您可以手动添加如 `gpt-4o`、`claude-3-5-sonnet`、`gemini-2.0-flash` 等模型名称。
 
@@ -54,7 +54,7 @@ Cherry Studio 允许您为不同的任务创建不同的模型分组：
 ### Q1：连接测试失败，提示 404？
 
 * **原因**：通常是 API 地址填写不完整。
-* **解决方法**：请确保地址为 `http://infistar.ai/v1`，不要漏掉结尾的 `/v1`。
+* **解决方法**：请确保地址为 `https://infistar.ai/v1`，不要漏掉结尾的 `/v1`。
 
 ### Q2：提示 401 Unauthorized？
 

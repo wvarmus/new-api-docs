@@ -1,4 +1,4 @@
-﻿---
+---
 title: OpenCode (开源终端编程智能体) 深度集成指南
 ---
 
@@ -45,7 +45,7 @@ OpenCode 支持全平台安装。请打开您的终端（Terminal）并选择以
 在您的终端配置文件（如 `~/.zshrc` 或 `~/.bashrc`）中添加以下内容：
 
 ```bash
-export OPENAI_API_BASE="http://infistar.ai/v1"
+export OPENAI_API_BASE="https://infistar.ai/v1"
 export OPENAI_API_KEY="您的_SK_密钥"
 export OPENAI_MODEL_NAME="claude-3-7-sonnet"  # 默认启动模型
 ```
@@ -58,7 +58,7 @@ export OPENAI_MODEL_NAME="claude-3-7-sonnet"  # 默认启动模型
    ```
 2. 首次启动时，界面会引导您配置 Provider。
 3. 选择 **Custom / OpenAI Compatible**（自定义/兼容 OpenAI 协议）。
-4. **Base URL**：填入 `http://infistar.ai/v1`
+4. **Base URL**：填入 `https://infistar.ai/v1`
 5. **API Key**：填入您的无限星河 `sk-` 密钥。
 
 
