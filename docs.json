@@ -3,6 +3,7 @@
   "theme": "mint",
   "name": "无限星河 AI 文档",
   "logo": "/images/site-logo.svg",
+  "favicon": "/images/logo.png",
   "colors": {
     "primary": "#0ea5e9"
   },
