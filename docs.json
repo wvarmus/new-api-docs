@@ -31,18 +31,18 @@
             "group": "平台介绍",
             "pages": [
               "index",
-              "平台接入概览/平台通用使用流程",
-              "平台接入概览/计费逻辑深度解析",
-              "平台接入概览/充值与财务管理",
-              "平台接入概览/快速上手指南"
+              "getting-started/platform-workflow",
+              "getting-started/billing-logic",
+              "getting-started/recharge-finance",
+              "getting-started/quickstart"
             ]
           },
           {
             "group": "电商平台兑换指南",
             "pages": [
-              "电商平台兑换指南/适用平台与防骗提醒",
-              "电商平台兑换指南/保姆级兑换步骤",
-              "电商平台兑换指南/电商用户常见问题"
+              "ecommerce-redemption/supported-platforms-anti-fraud",
+              "ecommerce-redemption/redemption-steps",
+              "ecommerce-redemption/ecommerce-faq"
             ]
           }
         ]
@@ -54,16 +54,16 @@
             "group": "概览",
             "pages": [
               "api-overview",
-              "接口参考手册/实时语音",
-              "接口参考手册/错误码说明"
+              "api-reference/realtime-audio",
+              "api-reference/error-codes"
             ]
           },
           {
             "group": "技术对接规范",
             "pages": [
-              "技术对接规范/网关配置",
-              "技术对接规范/身份认证与权限管理",
-              "技术对接规范/高级功能与特性支持"
+              "integration-guides/gateway-config",
+              "integration-guides/authentication-permissions",
+              "integration-guides/advanced-features"
             ]
           },
           {
@@ -78,17 +78,17 @@
           {
             "group": "软件与客户端集成",
             "pages": [
-              "软件与客户端集成/Chatbox",
-              "软件与客户端集成/Cherry Studio",
-              "软件与客户端集成/Claude Code",
-              "软件与客户端集成/Crush",
-              "软件与客户端集成/Cursor",
-              "软件与客户端集成/LobeChat",
-              "软件与客户端集成/NextChat",
-              "软件与客户端集成/OpenClaw",
-              "软件与客户端集成/OpenCode",
-              "软件与客户端集成/SillyTavern (酒馆)",
-              "软件与客户端集成/VS Code"
+              "client-integrations/chatbox",
+              "client-integrations/cherry-studio",
+              "client-integrations/claude-code",
+              "client-integrations/crush",
+              "client-integrations/cursor",
+              "client-integrations/lobechat",
+              "client-integrations/nextchat",
+              "client-integrations/openclaw",
+              "client-integrations/opencode",
+              "client-integrations/sillytavern",
+              "client-integrations/vs-code"
             ]
           }
         ]
@@ -99,8 +99,8 @@
           {
             "group": "故障与限制",
             "pages": [
-              "技术支持与排错/常见 HTTP 状态码与故障排查",
-              "技术支持与排错/速率限制与并发说明"
+              "troubleshooting/http-status-troubleshooting",
+              "troubleshooting/rate-limits-concurrency"
             ]
           }
         ]
@@ -111,13 +111,13 @@
           {
             "group": "企业与开发者生态",
             "pages": [
-              "企业与开发者生态/企业与开发者生态"
+              "enterprise-developers/enterprise-developers"
             ]
           },
           {
             "group": "联系方式与反馈",
             "pages": [
-              "联系方式与反馈/联系方式与反馈"
+              "contact-feedback/contact-feedback"
             ]
           }
         ]

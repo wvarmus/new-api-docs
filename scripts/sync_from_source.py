@@ -45,10 +45,75 @@ def file_key(name: str):
     return (1, stripped)
 
 
+CHAPTER_SLUGS = {
+    "平台接入概览": "getting-started",
+    "电商平台兑换指南": "ecommerce-redemption",
+    "技术对接规范": "integration-guides",
+    "接口参考手册": "api-reference",
+    "软件与客户端集成": "client-integrations",
+    "企业与开发者生态": "enterprise-developers",
+    "技术支持与排错": "troubleshooting",
+    "联系方式与反馈": "contact-feedback",
+}
+
+PAGE_SLUGS = {
+    "关于我们与服务优势": "about-service-advantages",
+    "平台通用使用流程": "platform-workflow",
+    "计费逻辑深度解析": "billing-logic",
+    "充值与财务管理": "recharge-finance",
+    "快速上手指南": "quickstart",
+    "适用平台与防骗提醒": "supported-platforms-anti-fraud",
+    "保姆级兑换步骤": "redemption-steps",
+    "电商用户常见问题": "ecommerce-faq",
+    "网关配置": "gateway-config",
+    "身份认证与权限管理": "authentication-permissions",
+    "高级功能与特性支持": "advanced-features",
+    "模型列表": "models",
+    "聊天补全": "chat-completions",
+    "Responses API": "responses-api",
+    "Claude专属格式接口": "claude-format-api",
+    "Gemini专属接口": "gemini-api",
+    "文本嵌入": "embeddings",
+    "文档重排序": "document-rerank",
+    "内容安全审查": "moderation",
+    "图像生成": "image-generation",
+    "文本转语音": "text-to-speech",
+    "音频转录": "audio-transcription",
+    "视频生成": "video-generation",
+    "实时语音": "realtime-audio",
+    "错误码说明": "error-codes",
+    "企业与开发者生态": "enterprise-developers",
+    "常见 HTTP 状态码与故障排查": "http-status-troubleshooting",
+    "速率限制与并发说明": "rate-limits-concurrency",
+    "联系方式与反馈": "contact-feedback",
+    "Chatbox": "chatbox",
+    "Cherry Studio": "cherry-studio",
+    "Claude Code": "claude-code",
+    "Crush": "crush",
+    "Cursor": "cursor",
+    "LobeChat": "lobechat",
+    "NextChat": "nextchat",
+    "OpenClaw": "openclaw",
+    "OpenCode": "opencode",
+    "SillyTavern (酒馆)": "sillytavern",
+    "VS Code": "vs-code",
+}
+
+DOC_CHAPTER_DIRS = set(CHAPTER_SLUGS.values())
+
+
+def chapter_slug(chapter_name: str) -> str:
+    return CHAPTER_SLUGS.get(chapter_name, chapter_name)
+
+
+def page_slug(page_name: str) -> str:
+    return PAGE_SLUGS.get(page_name, page_name)
+
+
 RESERVED_API_FILES = {
-    "接口参考手册": {
-        "实时语音.mdx": "---\ntitle: 实时语音\ndescription: WebSocket 实时语音接口说明。\n---\n\n# 实时语音\n\n建立 WebSocket 连接用于实时对话交互。\n\n## 接口信息\n\n- **协议**：`WSS`\n- **端点**：`/v1/realtime?model=gpt-4o-realtime`\n- **认证**：`Authorization: Bearer {api_key}`\n\n## JavaScript 示例\n\n```javascript\nconst ws = new WebSocket('ws://infistar.ai/v1/realtime?model=gpt-4o-realtime', {\n  headers: { Authorization: 'Bearer sk-xxx' }\n});\n\nws.onopen = () => {\n  console.log('Connected');\n  ws.send(JSON.stringify({\n    type: 'conversation.item.create',\n    content: { type: 'input_text', text: '你好' }\n  }));\n};\n\nws.onmessage = (event) => {\n  const data = JSON.parse(event.data);\n  console.log(data);\n};\n```\n",
-        "错误码说明.mdx": "---\ntitle: 错误码说明\ndescription: 常见错误码与统一错误响应格式说明。\n---\n\n# 错误码说明\n\n| 错误码 | 说明 |\n| --- | --- |\n| 400 | 请求参数错误 |\n| 401 | 未授权 / API Key 无效 |\n| 403 | 权限不足 |\n| 404 | 资源不存在 |\n| 429 | 请求过于频繁（速率限制） |\n| 500 | 服务器内部错误 |\n| 501 | 接口未实现 |\n\n## 错误响应格式\n\n```json\n{\n  \"error\": {\n    \"message\": \"错误信息\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\"\n  }\n}\n```\n\n## 速率限制\n\n根据您的套餐等级，默认限制可能有所不同。具体限制可在个人中心查看。\n"
+    "api-reference": {
+        "realtime-audio.mdx": "---\ntitle: 实时语音\ndescription: WebSocket 实时语音接口说明。\n---\n\n# 实时语音\n\n建立 WebSocket 连接用于实时对话交互。\n\n## 接口信息\n\n- **协议**：`WSS`\n- **端点**：`/v1/realtime?model=gpt-4o-realtime`\n- **认证**：`Authorization: Bearer {api_key}`\n\n## JavaScript 示例\n\n```javascript\nconst ws = new WebSocket('ws://infistar.ai/v1/realtime?model=gpt-4o-realtime', {\n  headers: { Authorization: 'Bearer sk-xxx' }\n});\n\nws.onopen = () => {\n  console.log('Connected');\n  ws.send(JSON.stringify({\n    type: 'conversation.item.create',\n    content: { type: 'input_text', text: '你好' }\n  }));\n};\n\nws.onmessage = (event) => {\n  const data = JSON.parse(event.data);\n  console.log(data);\n};\n```\n",
+        "error-codes.mdx": "---\ntitle: 错误码说明\ndescription: 常见错误码与统一错误响应格式说明。\n---\n\n# 错误码说明\n\n| 错误码 | 说明 |\n| --- | --- |\n| 400 | 请求参数错误 |\n| 401 | 未授权 / API Key 无效 |\n| 403 | 权限不足 |\n| 404 | 资源不存在 |\n| 429 | 请求过于频繁（速率限制） |\n| 500 | 服务器内部错误 |\n| 501 | 接口未实现 |\n\n## 错误响应格式\n\n```json\n{\n  \"error\": {\n    \"message\": \"错误信息\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\"\n  }\n}\n```\n\n## 速率限制\n\n根据您的套餐等级，默认限制可能有所不同。具体限制可在个人中心查看。\n"
     }
 }
 
@@ -79,36 +144,32 @@ def sync_docs():
 
     source_chapters = chapter_dirs(SOURCE)
 
-    for existing in chapter_dirs(ROOT):
-        shutil.rmtree(existing, ignore_errors=True)
+    for dirname in DOC_CHAPTER_DIRS:
+        existing = ROOT / dirname
+        if existing.exists():
+            shutil.rmtree(existing, ignore_errors=True)
 
     for chapter in source_chapters:
         chapter_name = strip_chapter_prefix(chapter.name)
-        target_chapter = ROOT / chapter_name
+        target_chapter = ROOT / chapter_slug(chapter_name)
         target_chapter.mkdir(parents=True, exist_ok=True)
-        reserved_in_chapter = RESERVED_API_FILES.get(chapter_name, {})
+        reserved_in_chapter = RESERVED_API_FILES.get(target_chapter.name, {})
         for existing_file in target_chapter.iterdir():
             if existing_file.is_file() and existing_file.name in reserved_in_chapter:
                 continue
             if existing_file.is_file():
                 existing_file.unlink()
         for source_md in sorted(chapter.glob("*.md"), key=lambda p: file_key(p.stem)):
-            target_md = target_chapter / f"{strip_file_prefix(source_md.stem)}.md"
+            page_name = strip_file_prefix(source_md.stem)
+            target_md = target_chapter / f"{page_slug(page_name)}.md"
             target_md.write_text(transform_markdown(source_md.read_text(encoding="utf-8")), encoding="utf-8")
         for filename, content in reserved_in_chapter.items():
             (target_chapter / filename).write_text(content, encoding="utf-8")
 
-    default_page = ROOT / "平台接入概览" / "关于我们与服务优势.md"
+    default_page = ROOT / "getting-started" / "about-service-advantages.md"
     index_path = ROOT / "index.mdx"
     if default_page.exists():
-        index_path.write_text(
-            "---\n"
-            "title: 关于我们与服务优势\n"
-            "description: 基于 Mintlify 的文档镜像站，默认从平台介绍开始阅读。\n"
-            "---\n\n"
-            '<Redirect to="/平台接入概览/关于我们与服务优势" />\n',
-            encoding="utf-8",
-        )
+        index_path.write_text(default_page.read_text(encoding="utf-8"), encoding="utf-8")
 
 
 PAGE_ORDER = {
@@ -180,18 +241,23 @@ PAGE_ORDER = {
 
 
 def chapter_pages(chapter_name: str):
-    chapter = ROOT / chapter_name
-    files = {file.stem: file for file in chapter.glob("*.md")}
+    chapter = ROOT / chapter_slug(chapter_name)
     ordered_names = PAGE_ORDER.get(chapter_name, [])
     pages = []
 
     for name in ordered_names:
-        if name in files:
-            pages.append(f"{chapter_name}/{name}")
+        slug = page_slug(name)
+        if (chapter / f"{slug}.md").exists() or (chapter / f"{slug}.mdx").exists():
+            pages.append(f"{chapter.name}/{slug}")
 
-    remaining = [name for name in sorted(files.keys(), key=file_key) if name not in ordered_names]
-    for name in remaining:
-        pages.append(f"{chapter_name}/{name}")
+    known_slugs = {page_slug(name) for name in ordered_names}
+    remaining = [
+        file.stem
+        for file in sorted(chapter.glob("*.md"), key=lambda p: file_key(p.stem))
+        if file.stem not in known_slugs
+    ]
+    for slug in remaining:
+        pages.append(f"{chapter.name}/{slug}")
 
     return pages
 
@@ -201,7 +267,10 @@ def build_docs_json():
         "$schema": "https://mintlify.com/docs.json",
         "theme": "mint",
         "name": "无限星河 AI 文档",
-        "colors": {"primary": "#4f46e5"},
+        "logo": "/images/site-logo.svg",
+        "favicon": "/images/logo.png",
+        "colors": {"primary": "#0ea5e9"},
+        "styling": {"css": "style.css"},
         "navbar": {
             "links": [
                 {"label": "控制台", "href": "https://infistar.ai/console"},
@@ -224,8 +293,8 @@ def build_docs_json():
                             "group": "概览",
                             "pages": [
                                 "api-overview",
-                                "接口参考手册/实时语音",
-                                "接口参考手册/错误码说明"
+                                "api-reference/realtime-audio",
+                                "api-reference/error-codes"
                             ]
                         },
                         {

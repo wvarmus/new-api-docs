@@ -62,6 +62,7 @@
       "get": {
         "tags": ["模型与发现"],
         "summary": "模型列表",
+        "operationId": "list-models",
         "description": "获取当前可用的模型列表，并根据请求头自动返回 OpenAI、Anthropic 或 Gemini 风格结构。",
         "responses": {
           "200": {
@@ -88,6 +89,7 @@
       "post": {
         "tags": ["文本与对话"],
         "summary": "聊天补全",
+        "operationId": "create-chat-completion",
         "description": "对话补全接口，用于 AI 对话交互。支持流式和非流式响应。",
         "requestBody": {
           "required": true,
@@ -155,6 +157,7 @@
       "post": {
         "tags": ["文本与对话"],
         "summary": "Responses API",
+        "operationId": "create-response",
         "description": "用于创建模型响应，支持多轮对话、工具调用、推理等功能。",
         "requestBody": {
           "required": true,
@@ -190,6 +193,7 @@
       "post": {
         "tags": ["文本与对话"],
         "summary": "Claude 格式",
+        "operationId": "create-claude-message",
         "description": "Anthropic Claude Messages API 格式的请求接口。",
         "parameters": [
           {
@@ -224,6 +228,7 @@
       "post": {
         "tags": ["文本与对话"],
         "summary": "Gemini 聊天",
+        "operationId": "generate-gemini-content",
         "description": "Google Gemini 格式的对话接口。",
         "parameters": [
           {
@@ -260,6 +265,7 @@
       "post": {
         "tags": ["文本与对话"],
         "summary": "文本补全",
+        "operationId": "create-text-completion",
         "description": "传统文本补全接口。",
         "requestBody": {
           "required": true,
@@ -283,6 +289,7 @@
       "post": {
         "tags": ["嵌入与检索"],
         "summary": "文本嵌入",
+        "operationId": "create-embedding",
         "description": "文本嵌入向量生成接口，用于将文本转换为数值向量。",
         "requestBody": {
           "required": true,
@@ -304,6 +311,7 @@
       "post": {
         "tags": ["嵌入与检索"],
         "summary": "Gemini 嵌入",
+        "operationId": "create-gemini-embedding",
         "description": "Gemini 格式的嵌入接口。",
         "parameters": [
           {
@@ -333,6 +341,7 @@
       "post": {
         "tags": ["嵌入与检索"],
         "summary": "文档重排序",
+        "operationId": "rerank-documents",
         "description": "根据查询对文档列表进行相关性重排序。",
         "requestBody": {
           "required": true,
@@ -357,6 +366,7 @@
       "post": {
         "tags": ["内容安全"],
         "summary": "内容审查",
+        "operationId": "create-moderation",
         "description": "检查文本内容是否违反使用政策。",
         "requestBody": {
           "required": true,
@@ -377,6 +387,7 @@
       "post": {
         "tags": ["图像"],
         "summary": "图像生成",
+        "operationId": "create-image-generation",
         "description": "AI 图像生成接口，支持 DALL-E 系列和 GPT Image 等模型。",
         "requestBody": {
           "required": true,
@@ -402,6 +413,7 @@
       "post": {
         "tags": ["图像"],
         "summary": "图像编辑",
+        "operationId": "create-image-edit",
         "description": "在给定原始图像和提示的情况下创建编辑或扩展图像。",
         "requestBody": {
           "required": true,
@@ -430,6 +442,7 @@
       "post": {
         "tags": ["音频"],
         "summary": "文本转语音",
+        "operationId": "create-speech",
         "description": "将文本转换为音频。",
         "requestBody": {
           "required": true,
@@ -454,6 +467,7 @@
       "post": {
         "tags": ["音频"],
         "summary": "音频转录",
+        "operationId": "create-audio-transcription",
         "description": "将音频转换为文本（语音识别）。",
         "requestBody": {
           "required": true,
@@ -482,6 +496,7 @@
       "post": {
         "tags": ["音频"],
         "summary": "音频翻译",
+        "operationId": "create-audio-translation",
         "description": "将音频翻译为英文文本。",
         "requestBody": {
           "required": true,
@@ -508,6 +523,7 @@
       "post": {
         "tags": ["视频"],
         "summary": "视频生成",
+        "operationId": "create-video",
         "description": "AI 视频生成接口（OpenAI Sora 兼容格式）。",
         "requestBody": {
           "required": true,
@@ -540,6 +556,7 @@
       "post": {
         "tags": ["视频"],
         "summary": "视频生成任务",
+        "operationId": "create-video-generation",
         "description": "创建视频生成任务。",
         "requestBody": {
           "required": true,
@@ -562,6 +579,7 @@
       "get": {
         "tags": ["视频"],
         "summary": "获取视频生成任务状态",
+        "operationId": "retrieve-video-generation",
         "description": "获取视频生成任务当前状态。",
         "parameters": [
           {
@@ -580,6 +598,7 @@
       "post": {
         "tags": ["视频"],
         "summary": "可灵视频（文生视频）",
+        "operationId": "create-kling-text-to-video",
         "description": "快手可灵 AI 文生视频接口。",
         "requestBody": {
           "required": true,
@@ -601,6 +620,7 @@
       "post": {
         "tags": ["视频"],
         "summary": "可灵视频（图生视频）",
+        "operationId": "create-kling-image-to-video",
         "description": "快手可灵 AI 图生视频接口。",
         "requestBody": {
           "required": true,
@@ -623,6 +643,7 @@
       "get": {
         "tags": ["视频"],
         "summary": "获取可灵文生视频任务状态",
+        "operationId": "retrieve-kling-text-to-video",
         "parameters": [
           {
             "name": "task_id",
@@ -640,6 +661,7 @@
       "get": {
         "tags": ["视频"],
         "summary": "获取可灵图生视频任务状态",
+        "operationId": "retrieve-kling-image-to-video",
         "parameters": [
           {
             "name": "task_id",
@@ -657,6 +679,7 @@
       "post": {
         "tags": ["视频"],
         "summary": "即梦视频",
+        "operationId": "create-jimeng-video",
         "description": "字节即梦 AI 视频生成接口。通过 Action 参数区分提交任务与查询结果。",
         "parameters": [
           {
