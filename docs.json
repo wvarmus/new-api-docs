@@ -2,7 +2,11 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "无限星河 AI 文档",
-  "logo": "/images/site-logo.svg",
+  "logo": {
+    "light": "/images/site-logo.svg",
+    "dark": "/images/site-logo.svg",
+    "href": "https://infistar.ai/"
+  },
   "favicon": "/images/logo.png",
   "colors": {
     "primary": "#0ea5e9"
