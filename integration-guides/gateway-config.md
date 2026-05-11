@@ -2,7 +2,7 @@
 title: API 网关配置规范
 ---
 
-本指南旨在帮助开发者正确配置无限星河AI 的中转网关，确保您的应用能够稳定、安全地调用顶尖大模型。
+本指南旨在帮助开发者正确配置无限星河AI 的中转网关，让您的应用更稳定、安全地调用顶尖大模型。
 
 ---
 
@@ -18,7 +18,7 @@ title: API 网关配置规范
 
 ## 2. 鉴权与认证 (Authentication)
 
-我们采用标准的 **Bearer Token** 认证机制，该方式与 OpenAI 官方协议完全兼容。
+我们采用标准的 **Bearer Token** 认证机制，兼容 OpenAI 常用鉴权格式。
 
 ### 配置方式
 在您的 HTTP 请求 Header 中添加以下字段：
@@ -63,4 +63,3 @@ curl [https://infistar.ai/v1/chat/completions](https://infistar.ai/v1/chat/compl
     "model": "gpt-4o",
     "messages": [{"role": "user", "content": "Hello!"}]
   }'
-

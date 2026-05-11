@@ -1,14 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "无限星河 AI API",
+    "title": "无限星河AI API",
     "version": "1.0.0",
     "description": "基于 D:/AI/api-reference.md 整理的 OpenAPI 描述，用于 Mintlify API 文档展示。"
   },
   "servers": [
     {
       "url": "https://infistar.ai",
-      "description": "无限星河 AI API"
+      "description": "无限星河AI API"
     }
   ],
   "components": {

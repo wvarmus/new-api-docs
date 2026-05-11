@@ -112,8 +112,8 @@ def page_slug(page_name: str) -> str:
 
 RESERVED_API_FILES = {
     "api-reference": {
-        "realtime-audio.mdx": "---\ntitle: 实时语音\ndescription: WebSocket 实时语音接口说明。\n---\n\n# 实时语音\n\n建立 WebSocket 连接用于实时对话交互。\n\n## 接口信息\n\n- **协议**：`WSS`\n- **端点**：`/v1/realtime?model=gpt-4o-realtime`\n- **认证**：`Authorization: Bearer {api_key}`\n\n## JavaScript 示例\n\n```javascript\nconst ws = new WebSocket('ws://infistar.ai/v1/realtime?model=gpt-4o-realtime', {\n  headers: { Authorization: 'Bearer sk-xxx' }\n});\n\nws.onopen = () => {\n  console.log('Connected');\n  ws.send(JSON.stringify({\n    type: 'conversation.item.create',\n    content: { type: 'input_text', text: '你好' }\n  }));\n};\n\nws.onmessage = (event) => {\n  const data = JSON.parse(event.data);\n  console.log(data);\n};\n```\n",
-        "error-codes.mdx": "---\ntitle: 错误码说明\ndescription: 常见错误码与统一错误响应格式说明。\n---\n\n# 错误码说明\n\n| 错误码 | 说明 |\n| --- | --- |\n| 400 | 请求参数错误 |\n| 401 | 未授权 / API Key 无效 |\n| 403 | 权限不足 |\n| 404 | 资源不存在 |\n| 429 | 请求过于频繁（速率限制） |\n| 500 | 服务器内部错误 |\n| 501 | 接口未实现 |\n\n## 错误响应格式\n\n```json\n{\n  \"error\": {\n    \"message\": \"错误信息\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\"\n  }\n}\n```\n\n## 速率限制\n\n根据您的套餐等级，默认限制可能有所不同。具体限制可在个人中心查看。\n"
+        "realtime-audio.mdx": "---\ntitle: 实时语音\ndescription: WebSocket 实时语音接口说明。\n---\n\n# 实时语音\n\n建立 WebSocket 连接用于实时对话交互。\n\n## 接口信息\n\n- **协议**：`WSS`\n- **端点**：`/v1/realtime?model=gpt-4o-realtime`\n- **认证**：`Authorization: Bearer {api_key}`\n\n## JavaScript 示例\n\n```javascript\nconst ws = new WebSocket('wss://infistar.ai/v1/realtime?model=gpt-4o-realtime', {\n  headers: { Authorization: 'Bearer sk-xxx' }\n});\n\nws.onopen = () => {\n  console.log('Connected');\n  ws.send(JSON.stringify({\n    type: 'conversation.item.create',\n    content: { type: 'input_text', text: '你好' }\n  }));\n};\n\nws.onmessage = (event) => {\n  const data = JSON.parse(event.data);\n  console.log(data);\n};\n```\n",
+        "error-codes.mdx": "---\ntitle: 错误码说明\ndescription: 常见错误码与统一错误响应格式说明。\n---\n\n# 错误码说明\n\n| 错误码 | 说明 |\n| --- | --- |\n| 400 | 请求参数错误 |\n| 401 | 未授权 / API Key 无效 |\n| 403 | 权限不足 |\n| 404 | 资源不存在 |\n| 429 | 请求过于频繁（速率限制） |\n| 500 | 服务器内部错误 |\n| 501 | 接口未实现 |\n\n## 错误响应格式\n\n```json\n{\n  \"error\": {\n    \"message\": \"错误信息\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\"\n  }\n}\n```\n\n## 速率限制\n\n不同账户、线路和上游服务状态下，默认限制可能有所不同。具体限制可在个人中心查看。\n"
     }
 }
 
@@ -266,7 +266,7 @@ def build_docs_json():
     docs = {
         "$schema": "https://mintlify.com/docs.json",
         "theme": "mint",
-        "name": "无限星河 AI 文档",
+        "name": "无限星河AI 文档",
         "logo": "/images/site-logo.svg",
         "favicon": "/images/logo.png",
         "colors": {"primary": "#0ea5e9"},

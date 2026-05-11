@@ -2,7 +2,7 @@
 title: Gemini 专属聊天接口
 ---
 
-完全兼容 Google Gemini 原生 API 的端点设计，方便一直对接 Google 生态的开发者平滑迁移至无限星河AI 平台。
+提供兼容 Google Gemini 常用请求格式的接口，方便已对接 Google 生态的开发者迁移至无限星河AI 平台。
 
 > **标准生成端点：** `POST /v1beta/models/{model}:generateContent`
 > **流式生成端点：** `POST /v1beta/models/{model}:streamGenerateContent?alt=sse`

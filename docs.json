@@ -1,12 +1,8 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "无限星河 AI 文档",
-  "logo": {
-    "light": "/images/site-logo.svg",
-    "dark": "/images/site-logo.svg",
-    "href": "https://infistar.ai/"
-  },
+  "name": "无限星河AI 文档",
+  "logo": "/images/site-logo.svg",
   "favicon": "/images/logo.png",
   "colors": {
     "primary": "#0ea5e9"
@@ -34,7 +30,7 @@
           {
             "group": "平台介绍",
             "pages": [
-              "index",
+              "getting-started/about-service-advantages",
               "getting-started/platform-workflow",
               "getting-started/billing-logic",
               "getting-started/recharge-finance",
@@ -129,4 +125,3 @@
     ]
   }
 }
-

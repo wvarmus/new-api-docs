@@ -66,4 +66,3 @@ API Key 具有操作您账户余额的最高权限，请务必遵循以下安全
 ```bash
 curl [https://infistar.ai/v1/models](https://infistar.ai/v1/models) \
   -H "Authorization: Bearer 您的API_KEY"
-

@@ -1,4 +1,4 @@
-﻿---
+---
 title: 实时语音
 description: WebSocket 实时语音接口说明。
 ---
@@ -16,7 +16,7 @@ description: WebSocket 实时语音接口说明。
 ## JavaScript 示例
 
 ```javascript
-const ws = new WebSocket('ws://infistar.ai/v1/realtime?model=gpt-4o-realtime', {
+const ws = new WebSocket('wss://infistar.ai/v1/realtime?model=gpt-4o-realtime', {
   headers: { Authorization: 'Bearer sk-xxx' }
 });
 
@@ -33,4 +33,3 @@ ws.onmessage = (event) => {
   console.log(data);
 };
 ```
-

@@ -2,7 +2,7 @@
 title: 聊天补全接口 (Chat Completions)
 ---
 
-这是平台最核心、使用最频繁的接口，用于与各类语言大模型进行多轮对话交互。全面兼容目前市面上绝大多数基于 OpenAI 规范开发的客户端与插件。
+这是平台常用的对话接口，用于与各类语言大模型进行多轮对话交互。接口兼容 OpenAI 常用请求格式，便于接入多数基于 OpenAI 规范开发的客户端与插件。
 
 > **接口端点：** `POST /v1/chat/completions`
 > **身份认证：** `Authorization: Bearer 您的API_KEY`
@@ -20,4 +20,3 @@ title: 聊天补全接口 (Chat Completions)
 | **max_tokens** | 选填 | 限制 AI 本次回答生成的最大字数（Token 数），防止回答过长消耗过多余额。 |
 | **tools** | 选填 | 外部工具/函数调用列表。如果您希望 AI 能够调用您自己开发的外部插件（如查天气），可在此定义。 |
 | **reasoning_effort** | 选填 | 推理强度设置。仅针对 o1 等具备深度思考能力的模型生效，可设置为 `low`、`medium` 或 `high`。 |
-
