@@ -127,6 +127,7 @@ def chapter_dirs(root: Path):
 
 def transform_markdown(text: str) -> str:
     text = re.sub(r"<br\s*/?>", "<br />", text, flags=re.IGNORECASE)
+    text = re.sub(r"(!\[[^\]]*\]\()(?:\.\./)+图片/", r"\1/图片/", text)
 
     lines = text.splitlines()
     if lines and lines[0].startswith("# "):
@@ -267,7 +268,11 @@ def build_docs_json():
         "$schema": "https://mintlify.com/docs.json",
         "theme": "mint",
         "name": "无限星河AI 文档",
-        "logo": "/images/site-logo.svg",
+        "logo": {
+            "light": "/images/site-logo.svg",
+            "dark": "/images/site-logo.svg",
+            "href": "https://infistar.ai/"
+        },
         "favicon": "/images/logo.png",
         "colors": {"primary": "#0ea5e9"},
         "styling": {"css": "style.css"},
