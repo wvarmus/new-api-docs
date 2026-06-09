@@ -113,15 +113,15 @@
         "tab": "联系我们",
         "groups": [
           {
-            "group": "企业与开发者生态",
-            "pages": [
-              "enterprise-developers/enterprise-developers"
-            ]
-          },
-          {
             "group": "联系方式与反馈",
             "pages": [
               "contact-feedback/contact-feedback"
+            ]
+          },
+          {
+            "group": "企业与开发者生态",
+            "pages": [
+              "enterprise-developers/enterprise-developers"
             ]
           }
         ]

@@ -327,8 +327,8 @@ def build_docs_json():
                 {
                     "tab": "联系我们",
                     "groups": [
-                        {"group": "企业与开发者生态", "pages": chapter_pages("企业与开发者生态")},
                         {"group": "联系方式与反馈", "pages": chapter_pages("联系方式与反馈")},
+                        {"group": "企业与开发者生态", "pages": chapter_pages("企业与开发者生态")},
                     ],
                 },
             ]
